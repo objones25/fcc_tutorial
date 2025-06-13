@@ -1,0 +1,100 @@
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle me-2"></i>
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Friend Details</h1>
+  <div>
+    <%= link_to "Back to Friends", friends_path, class: "btn btn-outline-secondary me-2" %>
+    <%= link_to "Edit Friend", edit_friend_path(@friend), class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h5 class="card-title mb-0">
+          <i class="bi bi-person-circle me-2"></i>
+          <%= @friend.first_name %> <%= @friend.last_name %>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label class="form-label text-muted">First Name</label>
+            <p class="fs-5"><%= @friend.first_name %></p>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label text-muted">Last Name</label>
+            <p class="fs-5"><%= @friend.last_name %></p>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label text-muted">Email</label>
+            <p class="fs-5">
+              <% if @friend.email.present? %>
+                <a href="mailto:<%= @friend.email %>" class="text-decoration-none">
+                  <i class="bi bi-envelope me-1"></i><%= @friend.email %>
+                </a>
+              <% else %>
+                <span class="text-muted">Not provided</span>
+              <% end %>
+            </p>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label text-muted">Phone</label>
+            <p class="fs-5">
+              <% if @friend.phone.present? %>
+                <a href="tel:<%= @friend.phone %>" class="text-decoration-none">
+                  <i class="bi bi-telephone me-1"></i><%= @friend.phone %>
+                </a>
+              <% else %>
+                <span class="text-muted">Not provided</span>
+              <% end %>
+            </p>
+          </div>
+          <div class="col-12">
+            <label class="form-label text-muted">Twitter</label>
+            <p class="fs-5">
+              <% if @friend.twitter.present? %>
+                <a href="https://twitter.com/<%= @friend.twitter.gsub('@', '') %>" target="_blank" class="text-decoration-none">
+                  <i class="bi bi-twitter me-1"></i>@<%= @friend.twitter.gsub('@', '') %>
+                </a>
+              <% else %>
+                <span class="text-muted">Not provided</span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="card-title mb-0">Actions</h6>
+      </div>
+      <div class="card-body">
+        <div class="d-grid gap-2">
+          <%= link_to edit_friend_path(@friend), class: "btn btn-outline-primary" do %>
+            <i class="bi bi-pencil me-2"></i>Edit Friend
+          <% end %>
+          <%= link_to friends_path, class: "btn btn-outline-secondary" do %>
+            <i class="bi bi-arrow-left me-2"></i>Back to Friends
+          <% end %>
+          <%= button_to @friend, method: :delete, 
+                        class: "btn btn-outline-danger",
+                        confirm: "Are you sure you want to delete this friend?",
+                        data: { turbo_method: :delete } do %>
+            <i class="bi bi-trash me-2"></i>Delete Friend
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

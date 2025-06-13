@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= content_for(:title) || "Fcc Tutorial" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Bootstrap CSS %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    
+    <%# Bootstrap Icons %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <%# Navigation Header %>
+    <%= render 'home/header' %>
+
+    <%# Flash Messages %>
+    <% if notice %>
+      <div class="alert alert-success alert-dismissible fade show m-0" role="alert">
+        <i class="bi bi-check-circle me-2"></i>
+        <%= notice %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+    
+    <% if alert %>
+      <div class="alert alert-danger alert-dismissible fade show m-0" role="alert">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        <%= alert %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+
+    <%# Main Content %>
+    <main class="flex-grow-1">
+      <div class="container my-4">
+        <%= yield %>
+      </div>
+    </main>
+
+    <%# Footer %>
+    <footer class="bg-dark text-light py-4 mt-auto">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="mb-3">FCC Tutorial</h5>
+            <p class="text-muted mb-0">Learning web development with Ruby on Rails and Bootstrap.</p>
+          </div>
+          <div class="col-md-6">
+            <h6 class="mb-3">Quick Links</h6>
+            <ul class="list-unstyled">
+              <li><%= link_to "Home", root_path, class: "text-light text-decoration-none" %></li>
+              <li><%= link_to "About", "/home/about", class: "text-light text-decoration-none" %></li>
+            </ul>
+          </div>
+        </div>
+        <hr class="my-3">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <p class="text-muted mb-0">&copy; <%= Date.current.year %> FCC Tutorial. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <small class="text-muted">Built with Ruby on Rails & Bootstrap</small>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <%# Bootstrap JavaScript %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+  </body>
+</html>

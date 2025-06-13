@@ -1,0 +1,36 @@
+<% content_for :title, "Editing friend" %>
+
+<% if notice %>
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <i class="bi bi-info-circle me-2"></i>
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>
+    <i class="bi bi-pencil-square me-2"></i>
+    Edit Friend
+  </h1>
+  <div>
+    <%= link_to "View Friend", @friend, class: "btn btn-outline-info me-2" %>
+    <%= link_to "Back to Friends", friends_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card shadow-sm">
+      <div class="card-header bg-warning text-dark">
+        <h5 class="card-title mb-0">
+          <i class="bi bi-person-gear me-2"></i>
+          Editing <%= @friend.first_name %> <%= @friend.last_name %>
+        </h5>
+      </div>
+      <div class="card-body">
+        <%= render "form", friend: @friend %>
+      </div>
+    </div>
+  </div>
+</div>

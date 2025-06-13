@@ -1,0 +1,108 @@
+<%= form_with(model: friend, local: true, class: "needs-validation", novalidate: true) do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  
+  <% if friend.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <h5 class="alert-heading">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        <%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:
+      </h5>
+      <ul class="mb-0">
+        <% friend.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row g-3">
+    <div class="col-md-6">
+      <div class="form-floating">
+        <%= form.text_field :first_name, 
+            class: "form-control", 
+            placeholder: "First Name", 
+            required: true,
+            minlength: 2,
+            maxlength: 50 %>
+        <%= form.label :first_name, "First Name *" %>
+        <div class="invalid-feedback">
+          Please provide a first name (2-50 characters).
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-floating">
+        <%= form.text_field :last_name, 
+            class: "form-control", 
+            placeholder: "Last Name", 
+            required: true,
+            minlength: 2,
+            maxlength: 50 %>
+        <%= form.label :last_name, "Last Name *" %>
+        <div class="invalid-feedback">
+          Please provide a last name (2-50 characters).
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-floating">
+        <%= form.email_field :email, 
+            class: "form-control", 
+            placeholder: "Email Address" %>
+        <%= form.label :email, "Email Address" %>
+        <div class="invalid-feedback">
+          Please provide a valid email address.
+        </div>
+        <div class="form-text">
+          <i class="bi bi-info-circle me-1"></i>
+          Optional - We'll use this to contact you
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-floating">
+        <%= form.telephone_field :phone, 
+            class: "form-control", 
+            placeholder: "Phone Number",
+            title: "Enter a valid phone number (7-15 digits, may include common formatting)" %>
+        <%= form.label :phone, "Phone Number" %>
+        <div class="invalid-feedback">
+          Please provide a valid phone number with 7-15 digits.
+        </div>
+        <div class="form-text">
+          <i class="bi bi-info-circle me-1"></i>
+          Optional - Examples: 555-123-4567, (555) 123-4567, +1 555 123 4567
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-floating">
+        <%= form.text_field :twitter, 
+            class: "form-control", 
+            placeholder: "Twitter Handle",
+            pattern: "@?[A-Za-z0-9_]{1,15}",
+            maxlength: 16,
+            title: "Enter a valid Twitter handle (1-15 characters, letters, numbers, underscores)" %>
+        <%= form.label :twitter, "Twitter Handle" %>
+        <div class="invalid-feedback">
+          Please provide a valid Twitter handle (1-15 characters, letters, numbers, underscores).
+        </div>
+        <div class="form-text">
+          <i class="bi bi-info-circle me-1"></i>
+          Optional - Enter your Twitter handle (with or without @)
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <%= link_to "Cancel", friends_path, class: "btn btn-outline-secondary me-md-2" %>
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

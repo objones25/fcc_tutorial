@@ -1,0 +1,47 @@
+<% content_for :title, "Unlock Account" %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-5 col-md-7">
+    <div class="card shadow-sm">
+      <div class="card-header bg-dark text-white">
+        <h4 class="card-title mb-0">
+          <i class="bi bi-unlock me-2"></i>
+          Unlock Account
+        </h4>
+      </div>
+      <div class="card-body p-4">
+        <p class="text-muted mb-4">
+          <i class="bi bi-info-circle me-1"></i>
+          Your account has been locked. Enter your email to receive unlock instructions.
+        </p>
+
+        <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }, local: true, class: "needs-validation", novalidate: true) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="mb-3">
+            <div class="form-floating">
+              <%= f.email_field :email, 
+                  class: "form-control", 
+                  placeholder: "Email Address",
+                  autofocus: true, 
+                  autocomplete: "email",
+                  required: true %>
+              <%= f.label :email, "Email Address *" %>
+              <div class="invalid-feedback">
+                Please provide a valid email address.
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid mb-3">
+            <%= f.submit "Send Unlock Instructions", class: "btn btn-dark btn-lg" %>
+          </div>
+        <% end %>
+
+        <div class="text-center">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
