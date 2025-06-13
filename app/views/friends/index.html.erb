@@ -10,7 +10,15 @@
   <% content_for :title, "Friends" %>
 
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1>Friends</h1>
+    <div>
+      <h1>Friends</h1>
+      <% if params[:search].present? %>
+        <p class="text-muted mb-0">
+          Search results for "<%= params[:search] %>" 
+          <%= link_to "Clear search", friends_path, class: "btn btn-sm btn-outline-secondary ms-2" %>
+        </p>
+      <% end %>
+    </div>
     <%= link_to "New Friend", new_friend_path, class: "btn btn-primary" %>
   </div>
 
@@ -53,10 +61,90 @@
     </table>
   </div>
 <% else %>
-  <% content_for :title, "Welcome" %>
-  <h1>Hello World</h1>
-  <p>This is my first Rails webpage</p>
-  <div class="mt-4">
-    <p>Please <%= link_to "sign in", new_user_session_path, class: "text-decoration-none" %> or <%= link_to "sign up", new_user_registration_path, class: "text-decoration-none" %> to access your friends list.</p>
+  <% content_for :title, "Friends Management App" %>
+  
+  <!-- Hero Section -->
+  <div class="hero-section bg-primary text-white py-5 mb-5 rounded">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold mb-3">
+        <i class="bi bi-people-fill me-3"></i>
+        Friends Management App
+      </h1>
+      <p class="lead mb-4">
+        A modern Ruby on Rails application for managing your personal contacts and connections
+      </p>
+      <div class="d-flex justify-content-center gap-3">
+        <%= link_to "Get Started", new_user_registration_path, class: "btn btn-light btn-lg px-4" %>
+        <%= link_to "Sign In", new_user_session_path, class: "btn btn-outline-light btn-lg px-4" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="row mb-5">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 text-center">
+        <div class="card-body">
+          <i class="bi bi-person-plus-fill text-primary fs-1 mb-3"></i>
+          <h5 class="card-title">Add Friends</h5>
+          <p class="card-text">Easily add and organize your friends with detailed contact information including email, phone, and social media.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 text-center">
+        <div class="card-body">
+          <i class="bi bi-search text-primary fs-1 mb-3"></i>
+          <h5 class="card-title">Smart Search</h5>
+          <p class="card-text">Quickly find any friend using our powerful search feature that looks through names, emails, and contact details.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 text-center">
+        <div class="card-body">
+          <i class="bi bi-shield-check text-primary fs-1 mb-3"></i>
+          <h5 class="card-title">Secure & Private</h5>
+          <p class="card-text">Your data is protected with user authentication. Only you can see and manage your personal friend list.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Project Section -->
+  <div class="bg-light p-4 rounded mb-4">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h3 class="mb-3">
+          <i class="bi bi-code-slash me-2"></i>
+          Built with Ruby on Rails
+        </h3>
+        <p class="mb-2">
+          This project is based on the comprehensive Free Code Camp Ruby on Rails tutorial, 
+          enhanced with additional styling and functionality to create a modern web application.
+        </p>
+        <p class="mb-0">
+          <strong>Technologies used:</strong> Ruby on Rails, Bootstrap 5, Devise Authentication, SQLite Database
+        </p>
+      </div>
+      <div class="col-md-4 text-center">
+        <%= link_to "https://www.youtube.com/watch?v=fmyvWz5TUWg&t=2975s", 
+            target: "_blank", 
+            class: "btn btn-outline-primary btn-lg" do %>
+          <i class="bi bi-youtube me-2"></i>
+          View Tutorial
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="text-center py-4">
+    <h4 class="mb-3">Ready to get started?</h4>
+    <p class="text-muted mb-4">Join today and start organizing your contacts in a beautiful, easy-to-use interface.</p>
+    <div class="d-flex justify-content-center gap-3">
+      <%= link_to "Create Account", new_user_registration_path, class: "btn btn-primary btn-lg px-5" %>
+      <%= link_to "Learn More", home_about_path, class: "btn btn-outline-secondary btn-lg px-5" %>
+    </div>
   </div>
 <% end %>

@@ -59,13 +59,20 @@
           </div>
         <% end %>
         
-        <%# Search form (always visible) %>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 200px;"/>
-          <button class="btn btn-outline-success" type="submit">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
+        <%# Search form (only visible when signed in) %>
+        <% if user_signed_in? %>
+          <%= form_with url: friends_path, method: :get, local: true, class: "d-flex", role: "search" do |form| %>
+            <%= form.text_field :search, 
+                placeholder: "Search friends...", 
+                value: params[:search],
+                class: "form-control me-2", 
+                style: "width: 200px;",
+                "aria-label": "Search friends" %>
+            <%= form.submit class: "btn btn-outline-success" do %>
+              <i class="bi bi-search"></i>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,1 +1,171 @@
-<h1>About Us...</h1>
+<% content_for :title, "About This Project" %>
+
+<div class="container py-4">
+  <!-- Header Section -->
+  <div class="text-center mb-5">
+    <h1 class="display-4 mb-3">
+      <i class="bi bi-info-circle-fill text-primary me-3"></i>
+      About This Project
+    </h1>
+    <p class="lead text-muted">
+      A comprehensive Ruby on Rails friends management application
+    </p>
+  </div>
+
+  <!-- Project Overview -->
+  <div class="row mb-5">
+    <div class="col-lg-8 mx-auto">
+      <div class="card">
+        <div class="card-body p-4">
+          <h2 class="card-title mb-4">
+            <i class="bi bi-code-slash me-2"></i>
+            Project Overview
+          </h2>
+          <p class="card-text">
+            This Friends Management App is a full-stack web application built with Ruby on Rails. 
+            It demonstrates modern web development practices including user authentication, 
+            database relationships, search functionality, and responsive design.
+          </p>
+          <p class="card-text">
+            The application allows users to create accounts, securely manage their personal 
+            friend lists, and search through their contacts with ease. Each user's data is 
+            private and protected through authentication.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tutorial Credit -->
+  <div class="bg-primary text-white p-4 rounded mb-5">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h3 class="mb-3">
+          <i class="bi bi-youtube me-2"></i>
+          Based on Free Code Camp Tutorial
+        </h3>
+        <p class="mb-2">
+          This project is built following the comprehensive Ruby on Rails tutorial by Free Code Camp, 
+          created by Codemy.com. The tutorial provides an excellent foundation for learning 
+          full-stack web development with Rails.
+        </p>
+        <p class="mb-0">
+          <strong>Tutorial:</strong> "Learn Ruby on Rails in this full course for beginners"
+        </p>
+      </div>
+      <div class="col-md-4 text-center">
+        <%= link_to "https://www.youtube.com/watch?v=fmyvWz5TUWg&t=2975s", 
+            target: "_blank", 
+            class: "btn btn-light btn-lg" do %>
+          <i class="bi bi-play-circle me-2"></i>
+          Watch Tutorial
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Technologies Used -->
+  <div class="row mb-5">
+    <div class="col-lg-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title mb-4">
+            <i class="bi bi-gear-fill text-primary me-2"></i>
+            Technologies Used
+          </h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-gem text-danger me-2"></i><strong>Ruby on Rails 7</strong> - Web application framework</li>
+            <li class="mb-2"><i class="bi bi-bootstrap-fill text-primary me-2"></i><strong>Bootstrap 5</strong> - CSS framework for responsive design</li>
+            <li class="mb-2"><i class="bi bi-shield-check text-success me-2"></i><strong>Devise</strong> - Authentication solution</li>
+            <li class="mb-2"><i class="bi bi-database text-info me-2"></i><strong>SQLite</strong> - Database for development</li>
+            <li class="mb-2"><i class="bi bi-git text-warning me-2"></i><strong>Git</strong> - Version control</li>
+            <li class="mb-2"><i class="bi bi-code-square text-secondary me-2"></i><strong>ERB Templates</strong> - View templating</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title mb-4">
+            <i class="bi bi-list-check text-success me-2"></i>
+            Features Implemented
+          </h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-person-plus text-primary me-2"></i>User registration and authentication</li>
+            <li class="mb-2"><i class="bi bi-people text-primary me-2"></i>Personal friends management</li>
+            <li class="mb-2"><i class="bi bi-search text-primary me-2"></i>Real-time search functionality</li>
+            <li class="mb-2"><i class="bi bi-pencil text-primary me-2"></i>CRUD operations (Create, Read, Update, Delete)</li>
+            <li class="mb-2"><i class="bi bi-phone text-primary me-2"></i>Contact information validation</li>
+            <li class="mb-2"><i class="bi bi-shield-lock text-primary me-2"></i>User data privacy and security</li>
+            <li class="mb-2"><i class="bi bi-device-tablet text-primary me-2"></i>Responsive design for all devices</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Installation Instructions -->
+  <div class="card mb-5">
+    <div class="card-body">
+      <h3 class="card-title mb-4">
+        <i class="bi bi-download text-primary me-2"></i>
+        Installation & Setup
+      </h3>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Prerequisites</h5>
+          <ul>
+            <li>Ruby 3.0 or higher</li>
+            <li>Rails 7.0 or higher</li>
+            <li>SQLite3</li>
+            <li>Git</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h5>Quick Start</h5>
+          <ol>
+            <li>Clone the repository</li>
+            <li>Run <code>bundle install</code></li>
+            <li>Run <code>rails db:migrate</code></li>
+            <li>Start with <code>rails server</code></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Credits -->
+  <div class="text-center">
+    <h3 class="mb-4">Credits & Acknowledgments</h3>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <i class="bi bi-mortarboard-fill text-primary fs-1 mb-3"></i>
+            <h5>Free Code Camp</h5>
+            <p class="text-muted">Educational platform providing free coding tutorials</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <i class="bi bi-camera-video-fill text-danger fs-1 mb-3"></i>
+            <h5>Codemy.com</h5>
+            <p class="text-muted">Tutorial creator and Ruby on Rails instructor</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <i class="bi bi-gem text-danger fs-1 mb-3"></i>
+            <h5>Ruby Community</h5>
+            <p class="text-muted">For creating and maintaining the Ruby on Rails framework</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

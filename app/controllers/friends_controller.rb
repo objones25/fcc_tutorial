@@ -5,7 +5,11 @@ class FriendsController < ApplicationController
 
   # GET /friends or /friends.json
   def index
-    @friends = Friend.all
+    if user_signed_in?
+      @friends = current_user.friends.search(params[:search])
+    else
+      @friends = Friend.none
+    end
   end
 
   # GET /friends/1 or /friends/1.json

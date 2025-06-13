@@ -4,6 +4,20 @@ class Friend < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :last_name, presence: true, length: { minimum: 2, maximum: 50 }
 
+  # Search method for finding friends by name, email, phone, or twitter
+  def self.search(query)
+    return all if query.blank?
+
+    where(
+      "LOWER(first_name) LIKE LOWER(?) OR
+       LOWER(last_name) LIKE LOWER(?) OR
+       LOWER(email) LIKE LOWER(?) OR
+       LOWER(phone) LIKE LOWER(?) OR
+       LOWER(twitter) LIKE LOWER(?)",
+      "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%"
+    )
+  end
+
   validates :email, format: {
     with: URI::MailTo::EMAIL_REGEXP,
     message: "must be a valid email address"
